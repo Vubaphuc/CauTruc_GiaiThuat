@@ -201,6 +201,39 @@ class Solution {
         }
     }
 }
+//   Bài Tập Về Nhà Buổi 3
+// 217. Contains Duplicate
+class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        if(nums.length == 0 || nums.length == 1){
+            return false;
+        }
+        Arrays.sort(nums);
+        int check = -1;
+        for(int i : nums){
+            if(i != check){
+                check = i;
+            } else {
+                return true;
+            }
+        }
+    return false;
+    }
+}
+// 1051. Height Checker
+class Solution {
+    public int heightChecker(int[] heights) {
+        int nums[] = heights.clone();
+        Arrays.sort(nums);
+        int ans = 0;
+        for(int i = 0; i < nums.length; i++){
+            if(heights[i] != nums[i]){
+                ans++;
+            }
+        }
+        return ans;
+    }
+}
 public class Main {
     public static void main(String[] args) {
 
