@@ -234,6 +234,19 @@ class Solution {
         return ans;
     }
 }
+// Bài Tập về nhà Buổi 4
+// 342. Power of Four
+class Solution {
+    public boolean isPowerOfFour(int n) {
+        if(n == 1) return true;
+        if(n == 0 || n % 2 != 0) return false;
+        double temp = n/4.0;
+        if (temp % 1 != 0) return false;
+        return isPowerOfFour((int)temp);
+    }
+}
+// 394. Decode String
+
 public class Main {
     public static void main(String[] args) {
 
