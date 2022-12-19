@@ -246,7 +246,115 @@ class Solution {
     }
 }
 // 394. Decode String
-
+// ngăn xếp Stack
+class Solution {
+    public String decodeString(String s) {
+        Stack<Integer> numStack = new Stack<>();
+        Stack<String> stringStack = new Stack<>();
+        int k = 0;
+        for (char c : s.toCharArray()) {
+            if (Character.isDigit(c)) {
+                k = (k * 10) + (c - '0');
+                continue;
+            }
+            if (c == '[') {
+                numStack.push(k);
+                k = 0;
+                stringStack.push(String.valueOf(c));
+                continue;
+            }
+            if (c != ']') {
+                stringStack.push(String.valueOf(c));
+                continue;
+            }
+            StringBuilder temp = new StringBuilder();
+            while (!stringStack.peek().equals("[")){
+                temp.insert(0, stringStack.pop());
+                if(stringStack.empty()) break;
+            }
+            stringStack.pop();
+            StringBuilder replacement = new StringBuilder();
+            int count = numStack.pop();
+            for (int i = 0; i < count; i++)
+                replacement.append(temp);
+            stringStack.push(replacement.toString());
+        }
+        StringBuilder result = new StringBuilder();
+        while (!stringStack.empty()) {
+            result.insert(0, stringStack.pop());
+        }
+        return result.toString();
+    }
+}
+// đệ quy
+class Solution {
+    public String decodeString(String s) {
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<s.length();i++){
+            if(Character.isDigit(s.charAt(i))){
+                int index = i;
+                while(Character.isDigit(s.charAt(++i)));
+                int num = Integer.valueOf(s.substring(index, i));
+                if(s.charAt(i+1)==']'){
+                    i++;
+                    continue;
+                }
+                index = (i++) +1; 
+                int count = 1; 
+                while(count!=0){
+                    if(s.charAt(i)=='[')count++;
+                    if(s.charAt(i++)==']')count--;
+                }
+                String sub = decodeString(s.substring(index, --i));
+                while(num-->0)
+                    sb.append(sub);
+        }
+            else{
+                sb.append(s.charAt(i));
+            }
+        }
+        return sb.toString();
+    }
+}
+// bài tập về nhà buổi 5
+// 35. Search Insert Position
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        for(int i = 0; i < nums.length; i++){
+            if(nums[i] >= target){
+                return i;
+            }
+        }
+        return nums.length;
+    }
+}
+// 35. Search Insert Position -- TKNP
+class Solution {
+    public int searchInsert(int[] nums, int target) {
+        int start = 0;
+        int end = nums.length;
+        while(start < end){
+            if(nums[start] == target) return start;
+            if(nums[start] != target){
+                if(target < nums[start]) return start;
+            }
+            start++;
+        }
+        return start;
+    }
+}
+// 268. Missing Number
+class Solution {
+    public int missingNumber(int[] nums) {
+        int ans = 0;
+        int temp = 0;
+        for(int i = 0; i < nums.length; i++){
+            ans += (temp - nums[i]);
+            temp++;
+        }
+        return ans + temp;
+    }
+}
 public class Main {
     public static void main(String[] args) {
 
