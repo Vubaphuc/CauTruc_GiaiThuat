@@ -355,6 +355,125 @@ class Solution {
         return ans + temp;
     }
 }
+// Bài Kiểm Kra Môn Cấu Trúc Dữ liêu
+// 1512. Number of Good Pairs
+class Solution {
+    public int numIdenticalPairs(int[] nums) {
+        int count = 0;
+        for(int i = 0; i < nums.length; i++){
+            for(int j = 0; j < nums.length; j++){
+                if(nums[i] == nums[j] && i < j){
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+}
+// 2215. Find the Difference of Two Arrays
+class Solution {
+    public List<List<Integer>> findDifference(int[] nums1, int[] nums2) {
+        List<List<Integer>> lists = new ArrayList<>();
+        Set<Integer> set1 = new HashSet<>();
+        Set<Integer> set2 = new HashSet<>();
+        for(int i : nums1) {
+            set1.add(i);
+        }
+        for(int i : nums2) {
+            set2.add(i);
+        }
+        List<Integer> list1 = new ArrayList<>();
+        for (int i = 0; i < nums1.length; i++) {
+           if (set2.contains(nums1[i]) || list1.contains(nums1[i])){
+               continue;
+           }
+            list1.add(nums1[i]);
+        }
+        List<Integer> list2 = new ArrayList<>();
+        for (int i = 0; i < nums2.length; i++) {
+            if (set1.contains(nums2[i]) || list2.contains(nums2[i])){
+                continue;
+            }
+            list2.add(nums2[i]);
+        }
+        lists.add(list1);
+        lists.add(list2);
+        return lists;
+    }
+}
+// 2418. Sort the People
+class Solution {
+    public String[] sortPeople(String[] names, int[] heights) {
+        int n = heights.length;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n-i-1; j++){
+                if(heights[j] < heights[j+1]){
+                    int temp1 = heights[j];
+                    String temp2 = names[j];
+                    heights[j] = heights[j+1];
+                    names[j] = names[j+1];
+                    heights[j+1] = temp1;
+                    names[j+1] = temp2;
+                }
+            }
+        }
+        return names;
+    }
+}
+// 75. Sort Colors
+class Solution {
+    public void sortColors(int[] nums) {
+        int n = nums.length;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < n-i-1; j++){
+                if(nums[j] > nums[j+1]){
+                    int temp = nums[j];
+                    nums[j] = nums[j+1];
+                    nums[j+1] = temp;
+                }
+            }
+        }
+    }
+}
+// 888. Fair Candy Swap
+class Solution {
+    public int[] fairCandySwap(int[] aliceSizes, int[] bobSizes) {
+        int sum1 = 0;
+        int sum2 = 0;
+        for (int i = 0; i < aliceSizes.length; i++)
+            sum1 += aliceSizes[i];
+        for (int i = 0; i < bobSizes.length; i++)
+            sum2 += bobSizes[i];
+        int tb = (sum1 - sum2) / 2;
+        for (int i = 0; i < aliceSizes.length; i++) {
+            for (int j = 0; j < bobSizes.length; j++) {
+                if (aliceSizes[i] - bobSizes[j] == tb)
+                    return new int[]{aliceSizes[i], bobSizes[j]};
+            }
+        }
+        return null;
+    }
+}
+// 202. Happy Number
+class Solution {
+    public boolean isHappy(int n) {
+        Set<Integer> set = new HashSet<>();
+        int sum,digit;
+        while (set.add(n))
+        {
+            sum = 0;
+            while (n > 0) {
+                digit = n%10;
+                sum += digit*digit;
+                n /= 10;
+            }
+            if (sum == 1) return true;
+            else
+                n = sum;
+        }
+        return false;
+    }
+}
 public class Main {
     public static void main(String[] args) {
 
