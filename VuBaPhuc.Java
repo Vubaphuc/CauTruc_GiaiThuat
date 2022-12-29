@@ -474,6 +474,40 @@ class Solution {
         return false;
     }
 }
+// Bài tập về nhà buổi 7
+// 1346. Check If N and Its Double Exist
+class Solution {
+    public boolean checkIfExist(int[] arr) { // =>>  độ phức tạp độ toán là O(n^2)
+        //    = 1;        = n ;       = n;        => n(3n+1) + 1
+        for(int i = 0; i < arr.length; i++){
+            //    = 1;     = n ;           = n;   => n + 2n +1 => 3n + 1
+            for(int j = 0; j < arr.length; j++){
+                //        = n           +   n   => 2n + 1
+                if(arr[i] == 2 * arr[j] && i != j){
+                    return true;// = 1
+                }
+            }
+        }
+        return false; // = 1
+    }
+}
+// 766. Toeplitz Matrix
+class Solution {
+    public boolean isToeplitzMatrix(int[][] matrix) { // =>>  độ phức tạp độ toán là O(n^2)
+        //     = 1;            = n ;         = n;          => n(m + mn + 1) + 1 => nm + mn^2 + n + 1
+         for(int i = 0; i< matrix.length-1; i++){
+             //    = 1;        = m ;                = m;   => m + mn + 1 
+             for(int j = 0; j < matrix[i].length-1; j++){
+                //         = m * n
+                 if(matrix[i][j] != matrix[i+1][j+1])
+                    //   = 1
+                     return false;
+             }
+         }
+         // = 1
+         return true;
+     }
+ }
 public class Main {
     public static void main(String[] args) {
 
