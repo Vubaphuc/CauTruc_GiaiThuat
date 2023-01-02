@@ -508,6 +508,140 @@ class Solution {
          return true;
      }
  }
+ // Bài tập về nhà buổi 8
+ // 21. Merge Two Sorted Lists
+// class Solution {
+    // public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+        // if (list1 == null) return list2;
+        // if (list2 == null) return list1;
+        // if (list1.val < list2.val) {
+            // list1.next = mergeTwoLists(list1.next, list2);
+            // return list1;
+        // } else {
+            // list2.next = mergeTwoLists(list1, list2.next);
+            // return list2;
+        // }
+    // }
+// }
+// 707. Design Linked List
+// class MyLinkedList {
+    // Node head;
+// 
+    // public MyLinkedList() {
+// 
+    // }
+// 
+    // public int get(int index) {
+        // Node curr = head;
+        // int count = 0;
+        // while (curr != null) {
+            // if (count == index) {
+                // return curr.val;
+            // }
+            // count++;
+            // curr = curr.next;
+        // }
+        // return -1;
+    // }
+// 
+    // public void addAtHead(int val) {
+        // Node newNode = new Node(val);
+        // newNode.next = head;
+        // head = newNode;
+    // }
+// 
+    // public void addAtTail(int val) {
+        // if (head == null) {
+            // addAtHead(val);
+            // return;
+        // }
+        // Node newNode = new Node(val);
+        // Node lastNode = head;
+        // while (lastNode.next != null) {
+            // lastNode = lastNode.next;
+        // }
+        // lastNode.next = newNode;
+    // }
+// 
+    // public void addAtIndex(int index, int val) {
+        // if (index == 0) {
+            // addAtHead(val);
+        // }
+        // Node newNode = new Node(val);
+        // Node currNode = head;
+        // int count = 0;
+        // while (currNode != null) {
+            // count++;
+            // if (count == index) {
+                // newNode.next = currNode.next;
+                // currNode.next = newNode;
+                // break;
+            // }
+            // currNode = currNode.next;
+        // }
+    // }
+// 
+    // public void deleteAtIndex(int index) {
+        // if (index == 0) {
+            // head = head.next;
+        // }
+        // Node currNode = head;
+        // int count = 0;
+        // while (currNode != null) {
+            // if (count == index - 1) {
+                // if (currNode.next != null) {
+                    // currNode.next = currNode.next.next;
+                // } else {
+                    // currNode.next = null;
+                // }
+            // }
+            // currNode = currNode.next;
+            // count++;
+        // }
+    // }
+// 
+    // static class Node {
+        // int val;
+        // Node next;
+// 
+        // public Node(int val) {
+            // this.val = val;
+        // }
+    // }
+// }
+// 203. Remove Linked List Elements
+// class Solution {
+    // public ListNode removeElements(ListNode head, int val) {
+        // if (head == null) return head;
+        // while (head.val == val) {
+            // head = head.next;
+            // if (head == null) return head;
+        // }
+        // ListNode currNode = head;
+        // while (currNode != null) {
+            // if (currNode.next == null) return head;
+            // if (currNode.next.val == val) {
+                // currNode.next = currNode.next.next;
+            // } else {
+                // currNode = currNode.next;
+            // }
+        // }
+        // return head;
+    // }
+// }
+// 206. Reverse Linked List
+// class Solution {
+    // public ListNode reverseList(ListNode head) {
+        // ListNode curr = head;
+        // while (curr != null && curr.next != null) {
+            // ListNode nextNode = curr.next;
+            // curr.next = nextNode.next;
+            // nextNode.next = head;
+            // head = nextNode;
+        // }
+        // return head;
+    // }
+// }
 public class Main {
     public static void main(String[] args) {
 
