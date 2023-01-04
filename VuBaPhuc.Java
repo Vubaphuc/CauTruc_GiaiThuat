@@ -642,6 +642,70 @@ class Solution {
         // return head;
     // }
 // }
+
+// Bài tập về nhà buổi 9
+// 155. Min Stack
+
+// class MinStack {
+    // Node head;
+// 
+    // public MinStack() {
+// 
+    // }
+// 
+    // public void push(int val) {
+        // if (head == null) {
+            // head = new Node(val, val);
+        // } else {
+            // Node newNode = new Node(val, Math.min(head.min, val));
+            // newNode.next = head;
+            // head = newNode;
+        // }
+    // }
+// 
+    // public void pop() {
+        // head = head.next;
+    // }
+// 
+    // public int top() {
+        // return head.val;
+    // }
+// 
+    // public int getMin() {
+        // return head.min;
+    // }
+// 
+    // class Node {
+        // int val;
+        // int min;
+        // Node next;
+// 
+        // Node(int val, int min) {
+            // this.val = val;
+            // this.min = min;
+        // }
+    // }
+// }
+
+// 2073. Time Needed to Buy Tickets
+
+// class Solution {
+    // public int timeRequiredToBuy(int[] tickets, int k) {
+        // int val = tickets[k];
+        // int second = 0;
+        // for (int i = 0; i < tickets.length; i++) {
+            // if (tickets[i] < val) {
+                // second += tickets[i];
+            // } else {
+                // if (i > k) {
+                    // second--;
+                // }
+                // second += val;
+            // }
+        // }
+        // return second;
+    // }
+// }
 public class Main {
     public static void main(String[] args) {
 
