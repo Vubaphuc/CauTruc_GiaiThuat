@@ -741,3 +741,70 @@ class Solution {
         // return count;
     // }
 // }
+
+
+// Bài Tập về nhà buổi 11
+// 145. Binary Tree Postorder Traversal
+
+// class Solution {
+    // public List<Integer> postorderTraversal(TreeNode root) {
+        // List<Integer> list = new LinkedList<>();
+        // preoder(root, list);
+        // return list;
+    // }
+// 
+    // private void preoder(TreeNode root, List<Integer> list) {
+        // if (root == null) return;
+        // preoder(root.left, list);
+        // preoder(root.right, list);
+        // list.add(root.val);
+    // }
+// }
+
+// 94. Binary Tree Inorder Traversal
+
+// class Solution {
+    // public List<Integer> inorderTraversal(TreeNode root) {
+        // List<Integer> list = new LinkedList<>();
+        // preoder(root, list);
+        // return list;
+    // }
+    // private void preoder(TreeNode root, List<Integer> list) {
+        // if (root == null) return;
+        // preoder(root.left, list);
+        // list.add(root.val);
+        // preoder(root.right, list);
+    // }
+// }
+
+// 108. Convert Sorted Array to Binary Search Tree
+
+// class Solution {
+    // public TreeNode sortedArrayToBST(int[] nums) {
+        //  return createBST(nums, 0, nums.length - 1);
+    //  }
+//  
+    //  private TreeNode createBST(int nums[], int left, int right) {
+        //  if (left > right) return null;
+        //  int mid = (left + right) / 2;
+        //  TreeNode root = new TreeNode(nums[mid]);
+        //  root.left = createBST(nums, left, mid - 1);
+        //  root.right = createBST(nums, mid + 1, right);
+        //  return root;
+    //  }
+//  }
+// 
+// 98. Validate Binary Search Tree
+
+// class Solution {
+    // TreeNode node = null;
+    // public boolean isValidBST(TreeNode root) {
+        // if (root != null) {
+            // if (!isValidBST(root.left)) return false;
+            // if (node != null && root.val <= node.val) return false;
+            // node = root;
+            // return isValidBST(root.right);
+        // }
+        // return true;
+    // }
+// }
