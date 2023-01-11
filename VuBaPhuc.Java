@@ -808,3 +808,129 @@ class Solution {
         // return true;
     // }
 // }
+
+
+// Bài Tập về nhà buổi 12
+
+// 841. Keys and Rooms : -- dùng DFS và HashSet
+// class Solution {
+    // public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        // Set<Integer> set = new HashSet<>();
+        // set.add(0);
+        // DFS(rooms, set, 0);
+        // return set.size() == rooms.size();
+    // }
+// 
+    // private void DFS(List<List<Integer>> rooms, Set<Integer> set, int u) {
+        // for (int v : rooms.get(u)) {
+            // if (!set.contains(v)) {
+                // set.add(v);
+                // DFS(rooms, set, v);
+            // }
+        // }
+    // }
+// }
+
+// 841. Keys and Rooms : -- dùng DFS và mảng boolean
+// class Solution {
+    // public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        // int n = rooms.size();
+        // boolean[] visited = new boolean[n];
+        // DFS(rooms, visited, 0);
+        // while (--n > 0) {
+            // if (!visited[n]) {
+                // return false;
+            // }
+        // }
+        // return true;
+    // }
+    // private void DFS(List<List<Integer>> rooms, boolean[] visited, int u) {
+        // for (int v : rooms.get(u)) {
+            // if (!visited[v]) {
+                // visited[v] = true;
+                // DFS(rooms, visited, v);
+            // }
+        // }
+    // }
+// }
+
+// 841. Keys and Rooms : -- dùng BFS - mảng boolean
+// class Solution {
+    // public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        // int n = rooms.size();
+        // boolean[] visited = new boolean[n]; // tạo 1 mảng để đánh dấu
+        // Queue<Integer> queue = new LinkedList<>(); // tạo hàng đợi
+        // queue.add(0); // cho đỉnh đầu tiên vào queue
+        // visited[0] = true; // đánh dấu đỉnh đã được thăm
+        // while (!queue.isEmpty()) {  
+            // int size = queue.size();
+            // while (size-- > 0) {
+                // int u = queue.poll(); // lấy và xóa đầu hàng đợi
+                // for (int v : rooms.get(u)) {
+                    // if (!visited[v]) { // nếu chưa được đánh dấu
+                        // visited[v] = true; // đánh dấu
+                        // queue.add(v); // cho vào queue
+                    // } 
+                // }
+            // }
+        // }
+        // while (--n > 0) { // duyệt mảng đánh dấu
+            // if (!visited[n]) {
+                // return false;
+            // }
+        // }
+        // return true;
+    // }
+// }
+
+// 841. Keys and Rooms : -- dùng BFS - HashSet
+// class Solution {
+    // public boolean canVisitAllRooms(List<List<Integer>> rooms) {
+        // Set<Integer> set = new HashSet<>();
+        // Queue<Integer> queue = new LinkedList<>();
+        // queue.add(0);
+        // set.add(0);
+        // while (!queue.isEmpty()) {
+            // int size = queue.size();
+            // while (size-- > 0) {
+                // int u = queue.poll();
+                // BFS(rooms, set, 0);
+            // }
+        // }
+        // return set.size() == rooms.size();
+    // }
+    // private void BFS(List<List<Integer>> rooms, Set<Integer> set, int u) {
+        // for (int v : rooms.get(u)) {
+            // if (!set.contains(v)) {
+                // set.add(v);
+                // BFS(rooms, set, v);
+            // }
+        // }
+    // }
+// }
+
+// 102. Binary Tree Level Order Traversal - BFS
+// class Solution {
+    // public static List<List<Integer>> levelOrder(TreeNode root) {
+        // List<List<Integer>> lists = new ArrayList<>();
+        // List<Integer> list = new ArrayList<>();
+        // Queue<TreeNode> queue = new LinkedList<>();
+        // if (root == null) return lists;
+        // queue.add(root);
+        // while (!queue.isEmpty()) {
+            // int size = queue.size();
+            // lists.add(new ArrayList<>());
+            // while (size-- > 0) {
+                // TreeNode node = queue.poll();
+                // lists.get(lists.size() - 1).add(node.val);
+                // if (node.left != null) {
+                    // queue.add(node.left);
+                // }
+                // if (node.right != null) {
+                    // queue.add(node.right);
+                // }
+            // }
+        // }
+        // return lists;
+    // }
+// }
