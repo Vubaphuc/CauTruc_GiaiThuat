@@ -934,3 +934,80 @@ class Solution {
         // return lists;
     // }
 // }
+
+// Kiểm tra hết học phần
+
+// 733. Flood Fill
+
+// class Solution {
+    // public int[][] floodFill(int[][] image, int sr, int sc, int newColor) {
+        // // nếu pixel ở image[sr][sc] != newColor thì thực hiện thay thế
+        // // c0 = image[sr][sc] bằng newColor
+        // if (image[sr][sc] != newColor) {
+            // // duyệt , lấp đầy
+            // DFS(image, sr, sc, image[sr][sc], newColor);
+        // }
+        // nếu image[sr][sc] == newColor nghĩa là mảng image đã được flood fill(lấp đầy) 
+        // thì trả về image luôn
+        // return image;
+    // }
+// 
+    // private void DFS(int[][] image, int i, int j, int c0, int newColor) {
+        // // i và j là vị trí
+        // if (i < 0 || j < 0 || i >= image.length ||
+        //  j >= image[0].length || image[i][j] != c0) return;
+        // image[i][j] = newColor;
+        // DFS(image, i - 1, j, c0, newColor); // i - 1 = bên trái
+        // DFS(image, i + 1, j, c0, newColor); // i + 1 = bên phải
+        // DFS(image, i, j - 1, c0, newColor); // j - 1 = phía dưới
+        // DFS(image, i, j + 1, c0, newColor); // j + 1 = trên đầu
+    // }
+    // // độ phức tạp thuật toán là : số cột(n) * số dòng(m) 
+    // // => Độ phức tạp thuật toán TIME là: O(n*m)
+    // // => Độ phức tạp thuật toán SPACE là: O(n*m)
+// }
+
+// 1748. Sum of Unique Elements
+// public int sumOfUnique(int[] nums) {
+    // int sum = 0; // tạo 1 biến tổng
+    // for (int i = 0; i < nums.length; i++) {
+        // sum += nums[i]; // + tổng các số trong mảng nums
+        // nums: // đặt tên cho vòng for thứ 2
+        // for (int j = 0; j < nums.length; j++) {
+            // while (i != j) {
+                // if (nums[i] == nums[j]) { // số sánh nếu nums[i] == nums[j] và j != i
+                    // sum -= nums[i]; // lấy tổng trừ đi giá trị ở vị trí nums[i]
+                    // break nums; // thoát vòng for thứ 2 tiếp tục duyệt
+                // }
+                // break; 
+            // }
+        // }
+    // }
+    // return sum;
+    // Độ phức tạp thuật toán TIME là: O(n^2)
+    // Độ phức tạp thuật toán SPACE là: O(1)
+// }
+
+
+// 844. Backspace String Compare
+
+// class Solution {
+    // public boolean backspaceCompare(String S, String T) {
+        // return backspaced(S).equals(backspaced(T)); 
+        // trả về kết quả so sánh kết quả trả về của 2 chuỗi
+    // }
+// 
+    // private String backspaced(String s) {
+        // Stack<Character> stack = new Stack<>();
+        // for (char c : s.toCharArray()) {
+            // if (c != '#') { 
+                // stack.push(c); // cho ký tự lên trên cùng , gỡ bỏ nó
+            // } else if (!stack.isEmpty()) { 
+                // stack.pop(); // trả về ký tự trên cùng , gỡ bỏ nó
+            // }
+        // }
+        // return stack.toString();
+    // }
+// }
+// Độ phức tạp thuật toán TIME là: O(m+n) trong đó m = S.length()  và n = T.length()
+// Độ phức tạp thuật toán SPACE là: O(m+n) trong đó m = S.length()  và n = T.length()
