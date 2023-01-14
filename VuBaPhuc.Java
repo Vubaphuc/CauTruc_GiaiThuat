@@ -937,6 +937,7 @@ class Solution {
 
 // Kiểm tra hết học phần
 
+
 // 733. Flood Fill
 
 // class Solution {
@@ -967,7 +968,11 @@ class Solution {
     // // => Độ phức tạp thuật toán SPACE là: O(n*m)
 // }
 
+
+
+
 // 1748. Sum of Unique Elements
+
 // public int sumOfUnique(int[] nums) {
     // int sum = 0; // tạo 1 biến tổng
     // for (int i = 0; i < nums.length; i++) {
@@ -987,6 +992,8 @@ class Solution {
     // Độ phức tạp thuật toán TIME là: O(n^2)
     // Độ phức tạp thuật toán SPACE là: O(1)
 // }
+
+
 
 
 // 844. Backspace String Compare
@@ -1011,3 +1018,81 @@ class Solution {
 // }
 // Độ phức tạp thuật toán TIME là: O(m+n) trong đó m = S.length()  và n = T.length()
 // Độ phức tạp thuật toán SPACE là: O(m+n) trong đó m = S.length()  và n = T.length()
+
+
+
+// 160. Intersection of Two Linked Lists
+
+// public class Solution {
+    // public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        // if (headA == null || headB == null) return null;
+        // ListNode NodeA = headA;
+        // ListNode NodeB = headB;
+        // while (NodeA != NodeB) { // lặp cho đến khi NodeA == NodeB 
+            // nếu nodeA = null thì gán nodeA = nodeB
+            // nếu nodeA != null thì gán nodeA = NodeA.next
+            // NodeA = NodeA == null ? headB : NodeA.next;
+            // nếu nodeB = null thì gán nodeB = nodeA
+            // nếu nodeB != null thì gán nodeB = NodeB.next
+            // NodeB = NodeB == null ? headA : NodeB.next;
+        // }
+        // khi nodeA = nodeB thì return nodeA hoặc NodeB đều đượcc
+        // return NodeA;
+    // }
+// }
+// Độ phức tạp thuật toán TIME là: O(n)  trong đó n là số lần duyệt cho đến khi NodeA == NodeB
+
+
+// 100. Same Tree
+
+// class Solution {
+    // public boolean isSameTree(TreeNode p, TreeNode q) {
+        // if (p == null && q == null) return true; // nếu p và q đều null thì trả về true
+        // if (p == null || q == null || p.val != q.val) return false;  
+        // nếu số nút của p và q khắc nhau và giá trị val 2 ở các nút khác nhau thì trả về false 
+        // return isSameTree(p.left, q.left) && isSameTree(p.right, q.right);
+    // }
+// }
+// Độ phức tạp thuật toán TIME là: O(min) 
+// Độ phức tạp thuật toán SPACE là: O(log(min)) 
+// trong đó min là số nhỏ nhất giữa kích thước của cây q và p
+
+
+ 
+// 1926. Nearest Exit from Entrance in Maze
+
+public int nearestExit(char[][] maze, int[] entrance) {
+    // tạo 1 mảng chứa ô ban đầu
+    int[][] dirs = new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}};
+    // đánh dấu lối vào
+    int starRow = entrance[0];
+    int starCol = entrance[1];
+    maze[starRow][starCol] = '+';
+    // tạo 1 hàng đợi để lưu tất cả các ô thăm
+    Queue<int[]> queue = new LinkedList<>();
+    queue.offer(new int[]{starRow, starCol, 0});
+    while (!queue.isEmpty()) {
+        int[] curr = queue.poll();
+        int currRow = curr[0];
+        int currCol = curr[1];
+        int currDistance = curr[2];
+        // kiểm tra ô hiện tại và các ô lận cận
+        for (int[] dir : dirs) {
+            int nextRow = currRow + dir[0];
+            int nextCol = currCol + dir[1];
+            // nếu ô bên cạnh chưa được thăm
+            if (nextRow >= 0 && nextRow < maze.length && nextCol >= 0 && nextCol < maze[0].length && maze[nextRow][nextCol] == '.') {
+                // nếu trống là lối ra , trả về khoảng cách + 1
+                if (nextRow == 0 || nextRow == maze.length - 1 || nextCol == 0 || nextCol == maze[0].length - 1) {
+                    return currDistance + 1;
+                }
+                maze[nextRow][nextCol] = '+';
+                queue.offer(new int[]{nextRow, nextCol, currDistance + 1});
+            }
+        }
+    }
+    // nếu không tìm thấy lỗi ra trả về -1
+    return -1;
+
+    // // Độ phức tạp thuật toán TIME là: O(m*n)  trong đó m là đồ dài của cột và n là độ dài của dòng
+}
